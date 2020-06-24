@@ -1,6 +1,7 @@
 import React from 'react';
 import Slider from './Slider';
 import Logo from './Logo';
+import LoggingComponent from './LoggingComponent';
 
 import './App.css';
 
@@ -11,6 +12,7 @@ function App() {
         <h1>React Global State Management</h1>
         <Logo/>
         <Slider/>
+        <LoggingComponent/>
       </header>
     </div>
   );
