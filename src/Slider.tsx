@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
+import { useSliderContext } from './ContextManager';
 
 const useStyles = makeStyles({
   root: {
@@ -15,10 +16,10 @@ const valuetext = (value: number) => {
 
 const DiscreteSlider = () => {
   const classes = useStyles();
-  const [sliderValue, setSliderValue] = React.useState(20);
+  const {sliderValue, updateSliderValue} = useSliderContext();
 
   const handleSliderChange = (event: Object, value: number | number[]) => {
-   setSliderValue(value as number);
+    updateSliderValue(value as number);
   };
 
   return (
