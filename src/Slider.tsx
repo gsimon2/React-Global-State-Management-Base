@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
+import { useGlobalState } from './Store';
 
 const useStyles = makeStyles({
   root: {
@@ -15,10 +16,10 @@ const valuetext = (value: number) => {
 
 const DiscreteSlider = () => {
   const classes = useStyles();
-  const [sliderValue, setSliderValue] = React.useState(20);
+  const {globalState, dispatch} = useGlobalState();
 
   const handleSliderChange = (event: Object, value: number | number[]) => {
-   setSliderValue(value as number);
+    dispatch({type: 'SET_SLIDER', value: value as number});
   };
 
   return (
@@ -27,7 +28,7 @@ const DiscreteSlider = () => {
         Time per revolution
       </Typography>
       <Slider
-        value={sliderValue}
+        value={globalState.sliderValue}
         onChange={(e, v) => handleSliderChange(e,v)}
         aria-labelledby="discrete-slider"
         valueLabelDisplay="auto"
